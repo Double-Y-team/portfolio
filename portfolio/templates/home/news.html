@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titel %} News {% endblock %}
+
+
+{% block content %}
+
+<div id="page-content-wrapper">
+    <div class="container-fluid">
+        {% for news in all_news %}
+            {% include 'home/news_object.html' %}
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
