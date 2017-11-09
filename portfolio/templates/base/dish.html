@@ -8,14 +8,13 @@
 
 <div id="page-content-wrapper">
     <div class="container-fluid">
-    <h1>{{ dish.description }}</h1>
-        {% for img in dish.dishimg_set.all %}
-            <label for="dish{{forloop.counter}}">
-                <a href="{% url 'base:dish' dish.id %}">{{ dish.name }}</a>
-            <img src="{{ img.img.url }}">
+        <h1>{{ dish.name }}</h1>
+        {% for object in dish.dishimg_set.all %}
+            <label for="object{{forloop.counter}}">
+            <img src="{{ object.img.url }}">
             </label><br>
         {% endfor %}
-        <h1>Countries</h1>
+        <h4>{{ dish.recipe}}</h4>
     </div>
 </div>
 

@@ -8,12 +8,15 @@
 
 <div id="page-content-wrapper">
     <div class="container-fluid">
-        {% for country in list_of_countries %}
-            {% include 'base/country_object.html' %}
-        {% endfor %}
-        <h1>Countries</h1>
+        <div class="row">
+            {% for country in list_of_countries %}
+                {% include 'base/country_object.html' %}
+            {% endfor %}
+        </div>
     </div>
 </div>
 
 
 {% endblock %}
+
+
