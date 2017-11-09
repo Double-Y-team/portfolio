@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titel %} News {% endblock %}
+
+
+{% block content %}
+
+<div id="page-content-wrapper">
+    <div class="container-fluid">
+    <h1>{{ dish.description }}</h1>
+        {% for img in dish.dishimg_set.all %}
+            <label for="dish{{forloop.counter}}">
+                <a href="{% url 'base:dish' dish.id %}">{{ dish.name }}</a>
+            <img src="{{ img.img.url }}">
+            </label><br>
+        {% endfor %}
+        <h1>Countries</h1>
+    </div>
+</div>
+
+
+{% endblock %}

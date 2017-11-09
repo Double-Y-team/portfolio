@@ -20,7 +20,9 @@ class Countries(models.Model):
 class Dish(models.Model):
     name = models.CharField(max_length=256, help_text='max_length=256')
     description = models.CharField(max_length=256, help_text='max_length=256', blank=True)
+    main_img = models.ImageField(upload_to='base/dish_img/', blank=True, null=True)
     country = models.ForeignKey(Countries, on_delete=models.CASCADE, null=True)
+    recipe = models.CharField(max_length=2048, help_text='max_length=2048', blank=True, null=True, default=None)
 
     def __str__(self):
         return "%s" % self.name
@@ -35,7 +37,6 @@ class DishImg(models.Model):
     dish = models.ForeignKey(Dish, on_delete=models.CASCADE, null=True)
     img = models.ImageField(upload_to='base/dish_img/')
     is_activ = models.BooleanField(default=False)
-    is_main = models.BooleanField(default=True)
     upload = models.DateTimeField(auto_now_add=True, auto_now=False)
 
     def __str__(self):
@@ -44,4 +45,6 @@ class DishImg(models.Model):
     class Meta:
         verbose_name = "Image"
         verbose_name_plural = "Images"
+
+
 

@@ -8,10 +8,10 @@
 
 <div id="page-content-wrapper">
     <div class="container-fluid">
-{#        {% for news in all_news %}#}
-{#            {% include 'home/news_object.html' %}#}
-{#        {% endfor %}#}
-        <h1>Counties</h1>
+        {% for country in list_of_countries %}
+            {% include 'base/country_object.html' %}
+        {% endfor %}
+        <h1>Countries</h1>
     </div>
 </div>
 

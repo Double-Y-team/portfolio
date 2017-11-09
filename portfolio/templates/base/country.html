@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titel %} News {% endblock %}
+
+
+{% block content %}
+
+<div id="page-content-wrapper">
+    <div class="container-fluid">
+        {% for ctr in countries.dish_set.all %}
+            <label for="ctr{{forloop.counter}}">
+                <a href="{% url 'base:dish' ctr.id %}">{{ ctr.name }}</a>
+                {{ ctr.description }}
+            <img src="{{ ctr.main_img.url }}">
+            </label><br>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,6 @@
+<div>
+    <a href="{% url 'base:country' country.id %}"><h1>{{ country.name }}</h1></a>
+    <h3>{{ country.description }}</h3>
+    <img src="{{ country.img.url }}">
+    <img src="{{ country.flag.url }}">
+</div>
