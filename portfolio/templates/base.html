@@ -12,11 +12,13 @@
 
 
     <body>
-                {% include 'navbar.html' %}
-                {% block content %}
+            <div class="content">
+                    {% include 'navbar.html' %}
+                    {% block content %}
 
 
-                {% endblock %}
+                    {% endblock %}
+            </div>
         </div>
         {% include 'footer.html' %}
             <!-- jQuery -->
