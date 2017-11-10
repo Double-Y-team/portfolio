@@ -11,6 +11,10 @@ urlpatterns = [
 
     url(r'^dish/(?P<pk>[0-9]+)/$', views.DishView.as_view(), name='dish'),
 
+    url(r'^login/$', views.UserFormView.as_view(), name='login'),
+
+
+
 
 
 ]
