@@ -12,9 +12,37 @@
 
 
     <body>
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+                </li>
+                <li>
+                    <form class="navbar-form navbar-left" role="search" method="get" action="#">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="x" value="">
+                        </div>
+                        <button type="submit" class="btn btn-default">Search</button>
+                    </form>
+                </li>
+                <li>
+                    {% if username %}
+                        <a href="{% url 'base:login' %}">"""Log out"""</a>
+                    {% else %}
+                        <a href="{% url 'base:login' %}">"""Log in"""</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+
+        <div class="container-fluid">
+
+        </div>
+    </nav>
 
         <div id="wrapper">
-            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+
                 {% include 'navbar.html' %}
                 {% block content %}
 

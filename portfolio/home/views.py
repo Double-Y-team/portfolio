@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.views.generic import ListView, UpdateView, CreateView, DeleteView
 from .models import *
+from django.contrib import auth
 
 
 def home(request):
-    return render(request, 'home/home.html')
+    username = auth.get_user(request)
+    return render(request, 'home/home.html', locals())
 
 
 class NewsView(ListView):
