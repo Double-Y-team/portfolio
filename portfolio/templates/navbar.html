@@ -1,34 +1,59 @@
+<nav class="navbar navbar-default">
+    <div class="navbar-header">
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+            </li>
+            <li>
+                <form class="navbar-form navbar-left" role="search" method="get" action="#">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="x" value="">
+                    </div>
+                    <button type="submit" class="btn btn-default">Search</button>
+                </form>
+            </li>
+            <li>
+                {% if username %}
+                    <a href="{% url 'base:login' %}">"""Log in"""</a>
+                {% else %}
+                    <a href="{% url 'base:login' %}">"""Log out"""</a>
+                {% endif %}
+            </li>
+        </ul>
+    </div>
+</nav>
+<div id="wrapper">
+    <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">
+                        <a href="{% url 'home:home' %}">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'home:news' %}">News</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'base:countries' %}">Countries</a>  <button>list</button>
+                    </li>
+                    <li>
+                        <a href="#">Food</a>
+                    </li>
+                    <li>
+                        <a href="#">Gallery</a>
 
-<div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="{% url 'home:home' %}">
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'home:news' %}">News</a>
-                </li>
-                <li>
-                    <a href="{% url 'base:countries' %}">Countries</a>  <button>list</button>
-                </li>
-                <li>
-                    <a href="#">Food</a>
-                </li>
-                <li>
-                    <a href="#">Gallery</a>
+                    </li>
+                    <br>
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
 
-                </li>
-                <br>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
+                    <li>
 
-                <li>
-
-                </li>
-            </ul>
-        </div>
+                    </li>
+                </ul>
+    </div>
+</div>
