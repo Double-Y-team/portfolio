@@ -11,7 +11,11 @@ urlpatterns = [
 
     url(r'^dish/(?P<pk>[0-9]+)/$', views.DishView.as_view(), name='dish'),
 
-    url(r'^login/$', views.UserFormView.as_view(), name='login'),
+    url(r'^auth/login/$', views.UserLoginFormView.as_view(), name='login'),
+
+    url(r'^auth/logout/$', views.UserLogoutFormView.as_view(), name='logout'),
+
+    url(r'^auth/create/$', views.UserCreateFormView.as_view(), name='create'),
 
 
 

@@ -3,7 +3,7 @@ from django import forms
 from .models import *
 
 
-class UserForm(forms.ModelForm):
+class UserCreateForm(forms.ModelForm):
 
     password = forms.CharField(widget=forms.PasswordInput)
     email = models.EmailField()
