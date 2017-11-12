@@ -32,12 +32,18 @@ class CountryView(DetailView):
 class DishView(DetailView):
     model = Dish
     template_name = 'base/dish.html'
+    form_class = CommentForm
 
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
         context = self.get_context_data(object=self.object)
         context['username'] = auth.get_user(request)
+        context['form'] = self.form_class(None)
         return self.render_to_response(context)
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class
+        return render(request, self.template_name, locals())
 
 
 class UserCreateFormView(View):

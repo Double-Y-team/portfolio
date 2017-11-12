@@ -10,7 +10,8 @@ class UserCreateForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields =['username', 'email',  'password']
+        fields = ['first_name', 'last_name', 'username', 'email',  'password']
+
 
 
 
@@ -21,3 +22,10 @@ class UserLoginForm(forms.ModelForm):
     class Meta:
         model = User
         fields =['username',  'password']
+
+
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+        model = Comment
+        fields = ['comment']

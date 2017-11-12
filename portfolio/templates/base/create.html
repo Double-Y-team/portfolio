@@ -5,21 +5,12 @@
 
 
 {% block content %}
- <div class="general-contener">
-        <div class="container top-container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <h1 class="title">Creating new user</h1>
-                    <div>
-                        <form action="" method="post" class="form-inline text-center">{% csrf_token %}
-                            {% include 'base/login_obgect.html' %}
-                            <button type="submit" class="btn btn-primary btn-orange">Submit</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+    <div class="col-lg-offset-4 col-lg-4">
+    <form class="form-signin">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        {% csrf_token %}
+    {% include 'base/login_obgect.html' %}
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
+    </form>
     </div>
-
 {% endblock %}

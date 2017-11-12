@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Countries(models.Model):
@@ -45,6 +46,15 @@ class DishImg(models.Model):
     class Meta:
         verbose_name = "Image"
         verbose_name_plural = "Images"
+
+
+class Comment(models.Model):
+    comment = models.CharField(max_length=5000)
+    dish = models.ForeignKey(Dish, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, null=True)
+    is_created = models.DateTimeField(auto_now_add=True, auto_now=False)
+    is_updated = models.DateTimeField(auto_now_add=False, auto_now=True)
+
 
 
 
