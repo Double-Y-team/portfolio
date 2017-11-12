@@ -13,7 +13,7 @@ urlpatterns = [
 
     url(r'^auth/login/$', views.UserLoginFormView.as_view(), name='login'),
 
-    url(r'^auth/logout/$', views.UserLogoutFormView.as_view(), name='logout'),
+    url(r'^auth/logout/$', views.userlogout, name='logout'),
 
     url(r'^auth/create/$', views.UserCreateFormView.as_view(), name='create'),
 

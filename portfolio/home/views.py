@@ -2,9 +2,9 @@ from django.shortcuts import render
 from django.views.generic import View
 from .models import *
 from django.contrib import auth
-from django.views.generic.detail import SingleObjectMixin
+from django.contrib.auth.decorators import login_required
 
-
+@login_required(login_url='base:login')
 def home(request):
     username = auth.get_user(request)
     return render(request, 'home/home.html', locals())

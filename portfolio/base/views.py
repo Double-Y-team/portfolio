@@ -3,10 +3,15 @@ from django.views.generic import View, ListView, DetailView
 from django.contrib.auth import authenticate, login
 from django.contrib import auth
 from .forms import *
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class CountriesView(View):
+
+
+
+class CountriesView(LoginRequiredMixin, View):
     template_name = 'base/countries.html'
     context_object_name = 'list_of_countries'
+    login_url = 'base:login'
 
     def get(self, request, **kwargs):
         username = auth.get_user(request)
@@ -71,10 +76,26 @@ class UserCreateFormView(View):
 
 
 class UserLoginFormView(View):
-    pass
+    form_class = UserLoginForm
+    template_name = 'base/login.html'
+
+    def get(self, request, **kwargs):
+        username = auth.get_user(request)
+        form = self.form_class(None)
+        return render(request, self.template_name, locals())
+
+    def post(self, request):
+        username = request.POST.get('username', '')
+        password = request.POST.get('password', '')
+        user = auth.authenticate(username=username, password=password)
+        if user is not None:
+            auth.login(request, user)
+            return redirect('home:home')
 
 
-class UserLogoutFormView(View):
-    pass
+def userlogout(request):
+    auth.logout(request)
+    return redirect('/')
+
 
 
