@@ -3,15 +3,11 @@ from django.views.generic import View, ListView, DetailView
 from django.contrib.auth import authenticate, login
 from django.contrib import auth
 from .forms import *
-from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-
-
-class CountriesView(LoginRequiredMixin, View):
+class CountriesView(View):
     template_name = 'base/countries.html'
     context_object_name = 'list_of_countries'
-    login_url = 'base:login'
 
     def get(self, request, **kwargs):
         username = auth.get_user(request)

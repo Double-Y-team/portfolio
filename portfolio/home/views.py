@@ -3,16 +3,17 @@ from django.views.generic import View
 from .models import *
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-@login_required(login_url='base:login')
+# @login_required(login_url='base:login')
 def home(request):
     username = auth.get_user(request)
     return render(request, 'home/home.html', locals())
 
-
-class NewsView(View):
+class NewsView(View): #LoginRequiredMixin
     template_name = 'home/news.html'
     context_object_name = 'all_news'
+    #login_url = 'base:login'
 
     def get(self, request, **kwargs):
         username = auth.get_user(request)

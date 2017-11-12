@@ -13,7 +13,7 @@
                 </form>
             </li>
             <li>
-                {% if username %}
+                {% if username.username != '' %}
                     <a href="{% url 'base:logout' %}">Log out({{ username }})</a>
                 {% else %}
                     <a href="{% url 'base:login' %}">Log in</a>
