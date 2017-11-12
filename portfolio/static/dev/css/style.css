@@ -4,6 +4,6 @@ html, body {
     font-family: 'Roboto', sans-serif;
 }
 .content{
-    background-color: #48b893;
+    background: url('../../../media/home/news/cup.jpg');
     height: 100%;
 }

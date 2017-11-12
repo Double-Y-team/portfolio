@@ -70,13 +70,13 @@ body {
 .sidebar-nav li a {
   display: block;
   text-decoration: none;
-  color: #999999;
+  color:#00A589;
 }
 
 .sidebar-nav li a:hover {
   text-decoration: none;
   color: #fff;
-  background: rgba(255, 255, 255, 0.2);
+  background: #005a4a;
 }
 
 .sidebar-nav li a:active, .sidebar-nav li a:focus {
