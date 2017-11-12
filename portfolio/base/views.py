@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
 from django.views.generic import View, ListView, DetailView
 from django.contrib.auth import authenticate, login
 from django.contrib import auth
@@ -83,10 +83,15 @@ class UserLoginFormView(View):
     def post(self, request):
         username = request.POST.get('username', '')
         password = request.POST.get('password', '')
-        user = auth.authenticate(username=username, password=password)
+        user = authenticate(username=username, password=password)
         if user is not None:
-            auth.login(request, user)
-            return redirect('home:home')
+            if user.is_active:
+                login(request, user)
+                return redirect('home:home')
+        else:
+            login_error = "User dose not exist"
+            form = self.form_class(None)
+            return render(request, self.template_name, locals())
 
 
 def userlogout(request):

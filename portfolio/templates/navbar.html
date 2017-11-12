@@ -13,10 +13,10 @@
                 </form>
             </li>
             <li>
-                {% if username.username != '' %}
-                    <a href="{% url 'base:logout' %}">Log out({{ username }})</a>
+                {% if username.username%}
+                    <button type="submit" class="btn btn-default"><a href="{% url 'base:logout' %}">Log out</a></button>{{ username }}
                 {% else %}
-                    <a href="{% url 'base:login' %}">Log in</a>
+                    <button type="submit" class="btn btn-default"><a href="{% url 'base:login' %}">Log in</a></button>
                 {% endif %}
             </li>
         </ul>
