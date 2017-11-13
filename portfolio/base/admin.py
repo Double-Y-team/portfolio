@@ -12,9 +12,20 @@ class CountriesAdmin(admin.ModelAdmin):
 admin.site.register(Countries, CountriesAdmin)
 
 
+class TypesOfDishesAdmin(admin.ModelAdmin):
+    list_display = [field.name for field in TypesOfDishes._meta.fields]
+
+    class Meta:
+        model = TypesOfDishes
+
+
+admin.site.register(TypesOfDishes, TypesOfDishesAdmin)
+
+
 class DishImgInline(admin.TabularInline):
     model = DishImg
     extra = 0
+
 
 
 class DishAdmin(admin.ModelAdmin):
@@ -36,4 +47,8 @@ class DishImgAdmin(admin.ModelAdmin):
 
 
 admin.site.register(DishImg, DishImgAdmin)
+
+
+
+
 

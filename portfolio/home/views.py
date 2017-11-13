@@ -22,4 +22,3 @@ class NewsView(View): #LoginRequiredMixin
         return News.objects.all()
 
 
-    

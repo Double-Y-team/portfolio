@@ -29,9 +29,23 @@ class DishView(DetailView):
         return render(request, self.template_name, locals())
 
 
+class TypesOfDishesView(View):
+    template_name = 'base/types_of_dishes.html'
+    context_object_name = 'types'
+
+    def get(self, request, **kwargs):
+        types = TypesOfDishes.objects.all()
+        return render(request, self.template_name, locals())
+
+
+class DishesOfTypeView(DetailView):
+    model = TypesOfDishes
+    template_name = 'base/dishes_of_type.html'
+
+
 class UserCreateFormView(View):
     form_class = UserCreateForm
-    template_name = 'base/create.html'
+    template_name = 'base/.html'
 
     def get(self, request):
         temp = self.template_name
@@ -52,7 +66,7 @@ class UserCreateFormView(View):
 
             if user is not None:
                 if user.is_active:
-                    request.session.set_expiry(10000)
+                    request.session.set_expiry(3600)
                     request.session['username'] = username
                     login(request, user)
                     return redirect('home:home')
@@ -74,9 +88,9 @@ class UserLoginFormView(View):
         password = request.POST.get('password', '')
         user = authenticate(username=username, password=password)
         if user is not None:
-            if user.is_active:
+            if user.is_active and username not in request.session:
                 login(request, user)
-                request.session.set_expiry(10000)
+                request.session.set_expiry(3600)
                 request.session['username'] = username
                 return redirect('home:home')
         else:
