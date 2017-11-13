@@ -3,7 +3,8 @@
         <img src="{{ object.main_img.url }}" alt="...">
         <div class="caption">
             <a href="{% url 'base:dish' object.id %}"><h3>{{ object.name }}</h3></a>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            <h6>{{ object.price }}$</h6>
+            <p><a href="#" class="btn btn-primary" role="button">Add to cart</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
         </div>
     </div>
 </div>
