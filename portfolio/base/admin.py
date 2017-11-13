@@ -27,10 +27,16 @@ class DishImgInline(admin.TabularInline):
     extra = 0
 
 
+class CommentInline(admin.TabularInline):
+    model = Comment
+    extra = 0
+
+
+
 
 class DishAdmin(admin.ModelAdmin):
     list_display = [field.name for field in Dish._meta.fields]
-    inlines = [DishImgInline]
+    inlines = [DishImgInline, CommentInline]
 
     class Meta:
         model = Dish
@@ -47,6 +53,16 @@ class DishImgAdmin(admin.ModelAdmin):
 
 
 admin.site.register(DishImg, DishImgAdmin)
+
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display = [field.name for field in Comment._meta.fields]
+
+    class Meta:
+        model = Comment
+
+
+admin.site.register(Comment, CommentAdmin)
 
 
 
