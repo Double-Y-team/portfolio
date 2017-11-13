@@ -68,10 +68,11 @@ class DishImg(models.Model):
 
 
 class Comment(models.Model):
-    comment = models.CharField(max_length=5000)
+    comment = models.CharField(max_length=5000, blank=True)
     dish = models.ForeignKey(Dish, on_delete=models.CASCADE, null=True)
     user = models.ForeignKey(User, null=True)
-    is_active = models.BooleanField(default=True)
+
+    is_active = models.BooleanField(default=False)
     is_created = models.DateTimeField(auto_now_add=True, auto_now=False)
     is_updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
