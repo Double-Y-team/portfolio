@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, render_to_response
 from django.views.generic import View, ListView, DetailView
 from django.contrib.auth import authenticate, login
-from django.contrib import auth
+from django.contrib import auth, sessions
 from .forms import *
 
 
@@ -10,36 +10,19 @@ class CountriesView(View):
     context_object_name = 'list_of_countries'
 
     def get(self, request, **kwargs):
-        username = auth.get_user(request)
         list_of_countries = Countries.objects.all()
         return render(request, self.template_name, locals())
-
-    def get_queryset(self):
-        return Countries.objects.all()
 
 
 class CountryView(DetailView):
     model = Countries
     template_name = 'base/country.html'
 
-    def get(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        context = self.get_context_data(object=self.object)
-        context['username'] = auth.get_user(request)
-        return self.render_to_response(context)
-
 
 class DishView(DetailView):
     model = Dish
     template_name = 'base/dish.html'
     form_class = CommentForm
-
-    def get(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        context = self.get_context_data(object=self.object)
-        context['username'] = auth.get_user(request)
-        context['form'] = self.form_class(None)
-        return self.render_to_response(context)
 
     def post(self, request, *args, **kwargs):
         form = self.form_class
@@ -68,9 +51,9 @@ class UserCreateFormView(View):
             user = authenticate(username=username, password=password)
 
             if user is not None:
-
                 if user.is_active:
-
+                    request.session.set_expiry(10000)
+                    request.session['username'] = username
                     login(request, user)
                     return redirect('home:home')
 
@@ -93,6 +76,8 @@ class UserLoginFormView(View):
         if user is not None:
             if user.is_active:
                 login(request, user)
+                request.session.set_expiry(10000)
+                request.session['username'] = username
                 return redirect('home:home')
         else:
             login_error = "User dose not exist"

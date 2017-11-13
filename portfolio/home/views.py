@@ -7,7 +7,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 # @login_required(login_url='base:login')
 def home(request):
-    username = auth.get_user(request)
     return render(request, 'home/home.html', locals())
 
 class NewsView(View): #LoginRequiredMixin
@@ -16,7 +15,6 @@ class NewsView(View): #LoginRequiredMixin
     #login_url = 'base:login'
 
     def get(self, request, **kwargs):
-        username = auth.get_user(request)
         all_news = News.objects.all()
         return render(request, self.template_name, locals())
 
