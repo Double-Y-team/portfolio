@@ -1,0 +1,16 @@
+<div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+        <img src="{{ country.img.url }}" alt="...">
+        <img src="{{ country.flag.url }}" alt="...">
+        <div class="caption">
+             <a href="{% url 'base:country' country.id %}"><h3>{{ country.name }}</h3></a>
+            <p><h3>{{ country.description }}</h3></p>
+            {% if username.username %}
+                 <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+

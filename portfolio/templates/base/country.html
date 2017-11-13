@@ -11,7 +11,7 @@
         <div class="row">
             {% for object in countries.dish_set.all %}
                 <label for="ctr{{forloop.counter}}">
-                    {% include 'base/dish_object.html' %}
+                    {% include 'base/country_object.html' %}
                 </label><br>
             {% endfor %}
         </div>
