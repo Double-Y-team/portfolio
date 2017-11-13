@@ -9,12 +9,12 @@
     <form action="" method="post" class="form-inline text-center">
         <h2 class="form-signin-heading">Please sign in</h2>
         {% csrf_token %}
-        {% include 'base/login_obgect.html' %}
+        {% include 'access/login_obgect.html' %}
         {% if login_error %}
             <label class="error"> {{ login_error }}</label>
         {% endif %}
         <button type="submit" class="btn btn-primary btn-orange">Submit</button>
-        <label class="center" ><a href="{% url 'base:create'  %}">Create account</a></label>
+        <label class="center" ><a href="{% url 'access:create'  %}">Create account</a></label>
     </form>
 </div>
 
