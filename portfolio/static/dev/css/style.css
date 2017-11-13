@@ -4,6 +4,17 @@ html, body {
     font-family: 'Roboto', sans-serif;
 }
 .content{
-    background: url('../../../media/home/news/cup.jpg');
-    height: 100%;
-}
+    background: url('../../../media/home/news/bg.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    }
+.heading-delicia{
+    font-size: 300px;
+    color: #58ffeb;
+    font-family: Parchment;
+    }
+.text-muted{
+    font-size: 20px;
+    color: #005a4a;
+    }
