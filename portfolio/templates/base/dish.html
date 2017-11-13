@@ -5,6 +5,9 @@
 
 
 {% block content %}
+
+<div id="page-content-wrapper">
+    <div class="container-fluid">
         <h1>{{ dish.name }}</h1>
         {% for object in dish.dishimg_set.all %}
             <label for="object{{forloop.counter}}">
@@ -12,7 +15,7 @@
             </label><br>
         {% endfor %}
         <h4>{{ dish.recipe}}</h4>
-        <form action="" method="post" class="form-inline">
+        <form action="" method="post" class="form-inline text-center">
             {% csrf_token %}
             {% include 'base/comment_object.html' %}
             {% if comment_error %}
@@ -21,4 +24,8 @@
             <button type="submit" class="btn btn-primary btn-orange">Submit</button>
             <label class="center" ><a href="{% url 'base:create'  %}">Create account</a></label>
         </form>
+    </div>
+</div>
+
+
 {% endblock %}
