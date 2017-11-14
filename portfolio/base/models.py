@@ -1,5 +1,5 @@
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
 
 
 class Countries(models.Model):
@@ -68,7 +68,7 @@ class DishImg(models.Model):
 
 
 class Comment(models.Model):
-    comment = models.CharField(max_length=5000, blank=True)
+    comment = models.TextField('Comment')
     dish = models.ForeignKey(Dish, on_delete=models.CASCADE, null=True)
     user = models.ForeignKey(User, null=True)
 

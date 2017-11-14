@@ -1,8 +1,6 @@
-from django.shortcuts import render, redirect, render_to_response
-from django.views.generic import View, ListView, DetailView
-from django.views.generic.detail import SingleObjectMixin
-from django.contrib.auth import authenticate, login
-from django.contrib import auth, sessions
+from django.views.generic import View, DetailView
+from django.shortcuts import render, redirect
+from django.contrib import auth
 from .forms import *
 
 
@@ -31,13 +29,16 @@ class DishView(DetailView):
         context['form'] = self.form_class(None)
         return self.render_to_response(context)
 
-
-    def post(self, request, *args, **kwargs):
+    def post(self, request):
         form = self.form_class(request.POST)
-        post = form.save(commit=False)
-        post.comment = form.cleaned_data['comment']
-        post.save()
-        return render(request, self.template_name, locals())
+        self.object = self.get_object()
+        if form.is_valid():
+            comment = Comment()
+            comment.dish = Dish.objects.get(name=str(self.object))
+            comment.user = auth.get_user(request)
+            comment.comment = form.cleaned_data['comment_area']
+            comment.save()
+        return redirect('/')
 
 
 class TypesOfDishesView(View):

@@ -17,15 +17,13 @@
         <h4>{{ dish.recipe}}</h4>
     <hr>
         {% for object in dish.comment_set.all %}
-            <label for="ctr{{forloop.counter}}">
             {% include 'base/comment_object.html'%}
-            </label>
         {% endfor %}
      <form action="" method="post" class="form-inline text-center">
         <h2 class="form-signin-heading">Comments</h2>
         {% csrf_token %}
          {% for field in form %}
-             <textarea placeholder="Commennt" rows="3" cols="150" form="{{ field.comment }}"></textarea>
+             {{ field }}
          {% endfor %}
         <button class="btn btn-lg btn-primary btn-block" type="submit">Post</button>
     </form>
