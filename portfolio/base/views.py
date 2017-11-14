@@ -29,8 +29,10 @@ class DishView(DetailView):
         context['form'] = self.form_class(None)
         return self.render_to_response(context)
 
-    def post(self, request):
+    def post(self, request, *args, **kwargs):
+        print("12")
         form = self.form_class(request.POST)
+        print('1')
         self.object = self.get_object()
         if form.is_valid():
             comment = Comment()
