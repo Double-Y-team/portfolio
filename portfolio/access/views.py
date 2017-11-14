@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
-from django.views.generic import View
 from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
 from django.contrib import auth, sessions
+from django.views.generic import View
 from .forms import *
 
 

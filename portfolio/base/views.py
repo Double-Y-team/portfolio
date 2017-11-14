@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect, render_to_response, get_object_or_404
-from django.views.generic import View, ListView, DetailView
+from django.views.generic import View, DetailView
+from django.shortcuts import render, redirect
 from django.contrib import auth
 from .forms import *
 
@@ -29,7 +29,7 @@ class DishView(DetailView):
         context['form'] = self.form_class(None)
         return self.render_to_response(context)
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request):
         form = self.form_class(request.POST)
         self.object = self.get_object()
         if form.is_valid():
