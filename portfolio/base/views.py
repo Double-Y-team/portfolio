@@ -1,10 +1,6 @@
-from django.shortcuts import render, redirect, render_to_response
+from django.shortcuts import render, redirect, render_to_response, get_object_or_404
 from django.views.generic import View, ListView, DetailView
-from django.http import HttpResponseForbidden
-from django.views.generic.edit import FormMixin
-from django.contrib.auth import authenticate, login
-from django.contrib import auth, sessions
-from django.urls import reverse
+from django.contrib import auth
 from .forms import *
 
 
@@ -33,15 +29,16 @@ class DishView(DetailView):
         context['form'] = self.form_class(None)
         return self.render_to_response(context)
 
-
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
-        post = form.save(commit=False)
-        post.comment = form.cleaned_data['comment']
-        post.save()
-        return render(request, self.template_name, locals())
-
-
+        self.object = self.get_object()
+        if form.is_valid():
+            comment = Comment()
+            comment.dish = Dish.objects.get(name=str(self.object))
+            comment.user = auth.get_user(request)
+            comment.comment = form.cleaned_data['comment_area']
+            comment.save()
+        return redirect('/')
 
 
 class TypesOfDishesView(View):
