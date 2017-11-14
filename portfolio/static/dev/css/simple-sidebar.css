@@ -59,6 +59,12 @@ body {
   margin: 0;
   padding: 0;
   list-style: none;
+  background-color:#005a4a;
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+  font-family: Adobe Caslon Pro;
+  font-weight: normal;
+  font-size: 30px;
 }
 
 .sidebar-nav li {
