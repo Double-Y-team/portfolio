@@ -59,7 +59,7 @@ body {
   margin: 0;
   padding: 0;
   list-style: none;
-  background-color:#005a4a;
+  background-color:#1b6d57;
   opacity: 0.9;
   filter: alpha(opacity=90);
   font-family: Adobe Caslon Pro;
@@ -75,12 +75,12 @@ body {
 .sidebar-nav li a {
   display: block;
   text-decoration: none;
-  color:#00A589;
+  color:#30ffc7;
 }
 
 .sidebar-nav li a:hover {
   text-decoration: none;
-  color: #fff;
+  color: #ffffff;
   background: #005a4a;
 }
 
