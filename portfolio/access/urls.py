@@ -11,6 +11,7 @@ urlpatterns = [
 
     url(r'^access/create/$', views.UserCreateFormView.as_view(), name='create'),
 
+    url(r'^access/user/$', views.UserDetailsView.as_view(), name='details'),
 
 
 

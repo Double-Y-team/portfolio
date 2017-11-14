@@ -1,8 +1,17 @@
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.contrib import auth, sessions
-from django.views.generic import View
+from django.views.generic import View, DetailView
 from .forms import *
+
+
+class UserDetailsView(View):
+    model = User
+    template_name = 'access/user_details.html'
+
+    def get(self, request):
+        temp = self.template_name
+        return render(request, temp, locals())
 
 
 class UserCreateFormView(View):
