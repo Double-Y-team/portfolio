@@ -29,18 +29,15 @@ class DishView(DetailView):
         context['form'] = self.form_class(None)
         return self.render_to_response(context)
 
-    def post(self, request, *args, **kwargs):
-        print("12")
+    def post(self, request, **kwargs):
         form = self.form_class(request.POST)
-        print('1')
-        self.object = self.get_object()
         if form.is_valid():
             comment = Comment()
-            comment.dish = Dish.objects.get(name=str(self.object))
+            comment.dish = Dish.objects.get(id=kwargs['pk'])
             comment.user = auth.get_user(request)
             comment.comment = form.cleaned_data['comment_area']
             comment.save()
-        return redirect('/')
+        return redirect('/dish/'+str(kwargs['pk'])+'/')
 
 
 class TypesOfDishesView(View):
