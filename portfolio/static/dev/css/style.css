@@ -1,4 +1,4 @@
-body{
+body {
     background: url('../../../media/home/news/bg.jpg') no-repeat center center fixed;
     height: 100%;
     -webkit-background-size: cover;
@@ -9,6 +9,7 @@ body{
     font-size: 300px;
     color: #58ffeb;
     font-family:Parchment;
+    font-weight:normal;
     }
 .info-delicia{
     font-family:Adobe Caslon Pro;
