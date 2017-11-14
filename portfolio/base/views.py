@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect, render_to_response
 from django.views.generic import View, ListView, DetailView
-from django.views.generic.detail import SingleObjectMixin
+from django.http import HttpResponseForbidden
+from django.views.generic.edit import FormMixin
 from django.contrib.auth import authenticate, login
 from django.contrib import auth, sessions
+from django.urls import reverse
 from .forms import *
 
 
@@ -38,6 +40,8 @@ class DishView(DetailView):
         post.comment = form.cleaned_data['comment']
         post.save()
         return render(request, self.template_name, locals())
+
+
 
 
 class TypesOfDishesView(View):

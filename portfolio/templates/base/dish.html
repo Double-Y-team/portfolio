@@ -25,7 +25,7 @@
         <h2 class="form-signin-heading">Comments</h2>
         {% csrf_token %}
          {% for field in form %}
-             <textarea placeholder="Commennt" rows="3" cols="150" form="{{ field.comment }}"></textarea>
+             <textarea placeholder="Commennt" rows="3" cols="150" form="{{ field }}"></textarea>
          {% endfor %}
         <button class="btn btn-lg btn-primary btn-block" type="submit">Post</button>
     </form>
