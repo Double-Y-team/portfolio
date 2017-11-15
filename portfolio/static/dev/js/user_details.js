@@ -4,6 +4,6 @@ $(document).ready(function () {
     console.log(user_details);
     user_details.click(function (e) {
         e.preventDefault();
-    user_details_list.toggle();
-    });
+        user_details_list.toggle()
+    })
 });
