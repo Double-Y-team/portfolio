@@ -15,11 +15,9 @@ urlpatterns = [
 
     url(r'^dish/(?P<pk>[0-9]+)/$', views.DishView.as_view(), name='dish'),
 
+    url(r'^countries/update/(?P<pk>[0-9]+)/$', views.CountryUpdateView.as_view(), name='country_update'),
 
-
-
-
-
+    url(r'^dish/update/(?P<pk>[0-9]+)/$', views.DishUpdateView.as_view(), name='dish_update'),
 
 
 ]

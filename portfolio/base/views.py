@@ -1,4 +1,4 @@
-from django.views.generic import View, DetailView
+from django.views.generic import View, DetailView, UpdateView
 from django.shortcuts import render, redirect
 from django.contrib import auth
 from .forms import *
@@ -16,6 +16,18 @@ class CountriesView(View):
 class CountryView(DetailView):
     model = Countries
     template_name = 'base/country.html'
+
+
+class CountryUpdateView(UpdateView):
+    model = Countries
+    template_name = 'base/update_form.html'
+    fields = '__all__'
+
+
+class DishUpdateView(UpdateView):
+    model = Dish
+    template_name = 'base/update_form.html'
+    fields = '__all__'
 
 
 class DishView(DetailView):
