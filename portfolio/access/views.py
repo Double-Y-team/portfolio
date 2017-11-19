@@ -32,9 +32,7 @@ class UserCreateFormView(View):
             password = form.cleaned_data['password']
             user.set_password(password)
             user.save()
-
             user = authenticate(username=username, password=password)
-
             if user is not None:
                 if user.is_active:
                     request.session.set_expiry(3600)
