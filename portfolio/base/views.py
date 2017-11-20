@@ -1,5 +1,6 @@
-from django.views.generic import View, DetailView, UpdateView
+from django.views.generic import View, DetailView, UpdateView, ListView
 from django.shortcuts import render, redirect
+from django.core.paginator import Paginator
 from django.contrib import auth
 from .forms import *
 
@@ -10,6 +11,9 @@ class CountriesView(View):
 
     def get(self, request, **kwargs):
         list_of_countries = Countries.objects.all()
+        counter = Paginator(list_of_countries, 2)
+        page = int(request.GET.get('page', '1'))
+        contacts = counter.page(page)
         return render(request, self.template_name, locals())
 
 

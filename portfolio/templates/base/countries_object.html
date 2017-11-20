@@ -1,18 +1,19 @@
 <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
-        <img src="{{ country.img.url }}" alt="...">
-        <img src="{{ country.flag.url }}" alt="...">
+        <img src="{{ contact.img.url }}" alt="...">
+        <img src="{{ contact.flag.url }}" alt="...">
         <div class="caption">
-             <a href="{% url 'base:country' country.id %}"><h3>{{ country.name }}</h3></a>
-            <p><h3>{{ country.description }}</h3></p>
+             <a href="{% url 'base:country' contact.id %}"><h3>{{ contact.name }}</h3></a>
+            <p><h3>{{ contact.description }}</h3></p>
             {% if request.session.username == 'admin' %}
-                <p><a href="{% url 'base:country_update' country.id %}" class="btn btn-primary" role="button">Update</a>
+                <p><a href="{% url 'base:country_update' contact .id %}" class="btn btn-primary" role="button">Update</a>
             {% else %}
-                <a href="{% url 'base:country' country.id %}">Details</a></p>
+                <a href="{% url 'base:country' contact.id %}">Details</a></p>
             {% endif %}
         </div>
     </div>
 </div>
+
 
 
 
