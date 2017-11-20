@@ -61,6 +61,7 @@ class UserLoginFormView(View):
                 login(request, user)
                 request.session.set_expiry(3600)
                 request.session['username'] = username
+
                 return redirect('home:home')
         else:
             login_error = "User dose not exist"

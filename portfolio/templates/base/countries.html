@@ -9,9 +9,24 @@
 <div id="page-content-wrapper" >
     <div class="container-fluid">
         <div class="row">
-            {% for country in list_of_countries %}
+            {% for contact in contacts %}
                 {% include 'base/countries_object.html' %}
             {% endfor %}
+        <div class="pagination">
+        <span class="step-links">
+            {% if contacts.has_previous %}
+                <a href="?page={{ contacts.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ contacts.number }} of {{ contacts.paginator.num_pages }}.
+            </span>
+
+            {% if contacts.has_next %}
+                <a href="?page={{ contacts.next_page_number }}">next</a>
+            {% endif %}
+        </span>
+    </div>
         </div>
     </div>
 </div>
